@@ -1,0 +1,17 @@
+package com.emicalculator.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import com.emicalculator.base.BasePage;
+
+public class Homepage extends BasePage {
+
+	public Homepage(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(driver , this);
+	}
+	
+	
+
+}

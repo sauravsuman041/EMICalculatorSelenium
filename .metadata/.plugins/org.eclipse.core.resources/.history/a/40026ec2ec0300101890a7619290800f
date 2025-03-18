@@ -1,0 +1,45 @@
+package com.emicalculator.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.emicalculator.base.BasePage;
+
+public class Homepage extends BasePage {
+
+	public Homepage(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(driver , this);
+	}
+	
+	@FindBy(id = "loanAmount")
+    WebElement loanAmount;
+
+    @FindBy(id = "interestRate")
+    WebElement interestRate;
+
+    @FindBy(id = "loanTenure")
+    WebElement loanTenure;
+
+    @FindBy(id = "calculateButton")
+    WebElement calculateButton;
+    
+    public void setLoanAmount(String amount) {
+        enterText(loanAmount, amount);
+    }
+
+    public void setInterestRate(String rate) {
+        enterText(interestRate, rate);
+    }
+
+    public void setLoanTenure(String tenure) {
+    	enterText(loanTenure, tenure);
+    }
+
+    public void clickCalculate() {
+        onClick(calculateButton);
+    }
+
+}

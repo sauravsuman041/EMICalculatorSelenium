@@ -1,0 +1,65 @@
+package com.emicalculator.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import com.emicalculator.base.BasePage;
+
+public class CarLoanPage extends BasePage {
+
+	public CarLoanPage(WebDriver driver) {
+		super(driver);
+	}
+	
+
+    @FindBy(id = "carloanamount") 
+    WebElement loanAmount;
+
+    @FindBy(id = "carloaninterest") 
+    WebElement interestRate;
+
+    @FindBy(id = "carloanterm") 
+    WebElement loanTenure;
+
+    @FindBy(xpath = "//input[@value='Calculate']") 
+    WebElement calculateButton;
+
+    @FindBy(xpath = "//div[@id='emiamount']//span")
+    WebElement emiAmount;
+
+    @FindBy(xpath = "//div[@id='totalinterest']//span")
+    WebElement totalInterest;
+
+    @FindBy(xpath = "//div[@id='totalpayment']//span")
+    WebElement totalPayment;
+    
+    public void setCarLoanAmount(String amount) {
+        enterText(loanAmount, amount);
+    }
+
+    public void setCarInterestRate(String rate) {
+    	enterText(interestRate, rate);
+    }
+
+    public void setCarLoanTenure(String tenure) {
+    	enterText(loanTenure, tenure);
+    }
+
+    public void calculateCarLoanButton() {
+        onClick(calculateButton);
+    }
+
+    public String getEmiAmount() {
+        return emiAmount.getText();
+    }
+
+    public String getTotalInterest() {
+        return totalInterest.getText();
+    }
+
+    public String getTotalPayment() {
+        return totalPayment.getText();
+    }
+
+}

@@ -1,0 +1,34 @@
+Feature: EMI Calculation
+
+  Scenario Outline: Calculate EMI for Home Loan
+    Given user is on EMI calculator page
+    When user sets loan amount to "<amount>"
+    And user sets interest rate to "<rate>"
+    And user sets loan tenure to "<tenure>"
+    Then user should see calculated EMI details
+
+    Examples: 
+      | amount  | rate | tenure |
+      | 5000000 |   10 |     20 |
+
+  Scenario Outline: Calculate EMI for Personal Loan
+    Given user is on EMI calculator page
+    When user sets loan amount to "<amount>"
+    And user sets interest rate to "<rate>"
+    And user sets loan tenure to "<tenure>"
+    Then user should see calculated EMI details
+
+    Examples: 
+      | amount | rate | tenure |
+      | 750000 |   15 |      5 |
+
+  Scenario Outline: Calculate EMI for Car Loan
+    Given user is on EMI calculator page
+    When user sets loan amount to "<amount>"
+    And user sets interest rate to "<rate>"
+    And user sets loan tenure to "<tenure>"
+    Then user should see calculated EMI details
+
+    Examples: 
+      | amount  | rate | tenure |
+      | 2000000 |    9 |      6 |

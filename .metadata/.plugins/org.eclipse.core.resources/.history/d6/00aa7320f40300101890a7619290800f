@@ -1,0 +1,69 @@
+package com.emicalculator.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import com.emicalculator.base.BasePage;
+
+public class CarLoanPage extends BasePage {
+
+	public CarLoanPage(WebDriver driver) {
+		super(driver);
+	}
+	
+
+    @FindBy(id = "loanamount") 
+    WebElement loanAmount;
+
+    @FindBy(id = "loaninterest") 
+    WebElement interestRate;
+
+    @FindBy(id = "loanterm") 
+    WebElement loanTenure;
+
+    @FindBy(xpath = "//input[@value='Calculate']") 
+    WebElement calculateButton;
+
+    @FindBy(xpath = "//div[@id='emiamount']//span")
+    WebElement emiAmount;
+
+    @FindBy(xpath = "//div[@id='emitotalinterest']//span")
+    WebElement totalInterest;
+
+    @FindBy(xpath = "//div[@id='emitotalamount']//span")
+    WebElement totalPayment;
+    
+    public void setCarLoanAmount(String amount) {
+        enterText(loanAmount, amount);
+    }
+
+    public void setCarInterestRate(String rate) {
+    	enterText(interestRate, rate);
+    }
+
+    public void setCarLoanTenure(String tenure) {
+    	enterText(loanTenure, tenure);
+    }
+
+    public void calculateCarLoanButton() {
+        onClick(calculateButton);
+    }
+
+    public String getEmiAmount() {
+    	wait.until(ExpectedConditions.visibilityOf(emiAmount));
+        return emiAmount.getText();
+    }
+
+    public String getTotalInterest() {
+    	wait.until(ExpectedConditions.visibilityOf(totalInterest));
+        return totalInterest.getText();
+    }
+
+    public String getTotalPayment() {
+    	wait.until(ExpectedConditions.visibilityOf(totalPayment));
+        return totalPayment.getText();
+    }
+
+}

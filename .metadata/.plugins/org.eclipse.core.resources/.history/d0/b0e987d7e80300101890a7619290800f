@@ -1,0 +1,14 @@
+Feature: EMI Calculation
+
+  Scenario Outline: Calculate EMI for "<loanType>"
+    Given user is on EMI calculator page
+    When user sets loan amount to "<amount>"
+    And user sets interest rate to "<rate>"
+    And user sets loan tenure to "<tenure>"
+    Then user should see calculated EMI details
+
+    Examples:
+      | loanType      | amount  | rate | tenure |
+      | Home Loan     | 5000000 | 10   | 20     |
+      | Personal Loan | 750000  | 15   | 5      |
+      | Car Loan      | 2000000 | 9    | 6      |

@@ -1,0 +1,66 @@
+package com.emicalculator.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.emicalculator.base.BasePage;
+
+public class PersonalLoanPage extends BasePage {
+
+	public PersonalLoanPage(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(driver , this);
+	}
+	
+    @FindBy(id = "loanamount") 
+    WebElement loanAmount;
+
+    @FindBy(id = "loaninterest") 
+    WebElement interestRate;
+
+    @FindBy(id = "loanterm") 
+    WebElement loanTenure;
+
+    @FindBy(xpath = "//input[@value='Calculate']") 
+    WebElement calculateButton;
+
+    @FindBy(xpath = "//div[@id='emiamount']//span")
+    WebElement emiAmount;
+
+    @FindBy(xpath = "//div[@id='totalinterest']//span")
+    WebElement totalInterest;
+
+    @FindBy(xpath = "//div[@id='totalpayment']//span")
+    WebElement totalPayment;
+
+    public void setPersonalLoanAmount(String amount) {
+        enterText(loanAmount, amount);
+    }
+
+    public void setPersonalInterestRate(String rate) {
+    	enterText(interestRate, rate);
+    }
+
+    public void setPersonalLoanTenure(String tenure) {
+    	enterText(loanTenure, tenure);
+    }
+
+    public void calculatePersonalLoanButton() {
+        onClick(calculateButton);
+    }
+
+    public String getPersonalLoanEmiAmount() {
+        return emiAmount.getText();
+    }
+
+    public String getPersonalLoanTotalInterest() {
+        return totalInterest.getText();
+    }
+
+    public String getPersonalLoanTotalPayment() {
+        return totalPayment.getText();
+    }
+
+}

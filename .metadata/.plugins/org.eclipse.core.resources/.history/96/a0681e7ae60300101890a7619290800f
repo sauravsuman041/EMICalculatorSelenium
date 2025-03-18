@@ -1,0 +1,27 @@
+package question1;
+
+import java.util.Arrays;
+
+public class SecondMinMax {
+
+    public static void findSecondMinMax(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("Array must contain at least two elements.");
+            return;
+        }
+
+        Arrays.sort(arr);
+
+        int secondMin = arr[1];
+        int secondMax = arr[arr.length - 2];
+
+        System.out.println("2nd Min Number: " + secondMin);
+        System.out.println("2nd Max Number: " + secondMax);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {21, 4, 67, 41, 9, 57, 88};
+
+        findSecondMinMax(arr);
+    }
+}

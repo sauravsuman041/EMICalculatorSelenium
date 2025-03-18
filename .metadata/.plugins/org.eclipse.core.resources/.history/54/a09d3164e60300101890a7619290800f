@@ -1,0 +1,51 @@
+package question1;
+
+import java.util.Arrays;
+
+public class SecondMinMax {
+
+    public static void findSecondMinMax(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("Array must contain at least two elements.");
+            return;
+        }
+
+        Arrays.sort(arr);
+
+        int min = arr[0];
+        int secondMin = Integer.MAX_VALUE;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] != min) {
+                secondMin = arr[i];
+                break;
+            }
+        }
+
+        int max = arr[arr.length - 1];
+        int secondMax = Integer.MIN_VALUE;
+        for (int i = arr.length - 2; i >= 0; i--) {
+            if (arr[i] != max) {
+                secondMax = arr[i];
+                break;
+            }
+        }
+
+        if (secondMin == Integer.MAX_VALUE) {
+            System.out.println("No unique second minimum found.");
+        } else {
+            System.out.println("2nd Unique Min Number: " + secondMin);
+        }
+
+        if (secondMax == Integer.MIN_VALUE) {
+            System.out.println("No unique second maximum found.");
+        } else {
+            System.out.println("2nd Unique Max Number: " + secondMax);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {21, 4, 67, 41, 9, 57, 88};
+
+        findSecondMinMax(arr);
+    }
+}
